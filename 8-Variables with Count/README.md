@@ -11,12 +11,12 @@ Here’s a simple example of using the count function in Terraform with a fixed 
 
 resource "aws_instance" "example" {
   count         = 3  # This will create 3 EC2 instances
-  ami           = "ami-123456"  # Replace with a valid AMI ID
+  ami           = "ami-0bfddf4206f1fa7b9"  # Replace with a valid AMI ID
   instance_type = "t2.micro"
 }
 ```
 ---
-'count = 3': This line specifies that Terraform should create three instances of the aws_instance resource.
+`count = 3`: This line specifies that Terraform should create three instances of the aws_instance resource.
 Each instance can be accessed using an index, for example:
 - aws_instance.example[0] for the first instance
 - aws_instance.example[1] for the second instance
@@ -38,7 +38,7 @@ variable "instance_count" {
 
 resource "aws_instance" "example" {
   count         = var.instance_count  # Use the variable for count
-  ami           = "ami-123456"        # Replace with a valid AMI ID
+  ami           = "ami-0bfddf4206f1fa7b9"        # Replace with a valid AMI ID
   instance_type = "t2.micro"
 }
 
@@ -85,6 +85,6 @@ In this case, it will create three instances because the list has three items.
 
 *Dynamic Instance Type Assignment*
 - The line `instance_type = var.instance_types[count.index]` assigns the instance type for each created instance based on the corresponding index in the list. For example:
-- - The first instance will use `t2.micro`
-- - The second instance will use `t2.small`
-- - The third instance will use `t2.medium`
+ - The first instance will use `t2.micro`
+ - The second instance will use `t2.small`
+ - The third instance will use `t2.medium`
